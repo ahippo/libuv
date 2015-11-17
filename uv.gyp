@@ -53,6 +53,7 @@
         'include/uv.h',
         'include/tree.h',
         'include/uv-errno.h',
+        'include/uv-queue.h',
         'include/uv-threadpool.h',
         'include/uv-version.h',
         'src/fs-poll.c',
