@@ -27,6 +27,7 @@ SPARSE_FLAGS=${SPARSE_FLAGS:-"
 
 SOURCES="
 include/tree.h
+include/uv-queue.h
 include/uv-unix.h
 include/uv.h
 src/fs-poll.c

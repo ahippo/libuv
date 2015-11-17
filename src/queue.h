@@ -18,11 +18,11 @@
 
 #include <stddef.h>
 
-typedef void *QUEUE[2];
+#include "uv-queue.h"
 
 /* Private macros. */
-#define QUEUE_NEXT(q)       (*(QUEUE **) &((*(q))[0]))
-#define QUEUE_PREV(q)       (*(QUEUE **) &((*(q))[1]))
+#define QUEUE_NEXT(q)       ((q)->next)
+#define QUEUE_PREV(q)       ((q)->prev)
 #define QUEUE_PREV_NEXT(q)  (QUEUE_NEXT(QUEUE_PREV(q)))
 #define QUEUE_NEXT_PREV(q)  (QUEUE_PREV(QUEUE_NEXT(q)))
 
@@ -37,7 +37,7 @@ typedef void *QUEUE[2];
   for ((q) = QUEUE_NEXT(h); (q) != (h); (q) = QUEUE_NEXT(q))
 
 #define QUEUE_EMPTY(q)                                                        \
-  ((const QUEUE *) (q) == (const QUEUE *) QUEUE_NEXT(q))
+  ((q) == QUEUE_NEXT(q))
 
 #define QUEUE_HEAD(q)                                                         \
   (QUEUE_NEXT(q))
